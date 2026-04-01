@@ -2,17 +2,27 @@
 <html>
 
 <head>
-<script type="text/javascript" src="DINO.JS"></script>
+<script type="module" src="dino.js"></script>
+<script type="module">
+        import Game from './dino.js'
+        function runGame() {
+    
+            var game = new Game()
+            game.run()
+        }
+        document.addEventListener('DOMContentLoaded',runGame)
+</script>
 </head>
 
-<body onload="pong()">
+<body>
 
 <h1>My first Dino</h1>
 
 <!-- The canvas element itself -->
-<canvas id="myCanvas" width="750" height="500" style="border:1px solid lch(40.59% 121.31 312.18 / 0.847);">
+<canvas id="game" width="800" height="600" style="border:1px solid lch(40.59% 121.31 312.18 / 0.847);">
 
 </canvas>
 
 </body>
 </html>
+
