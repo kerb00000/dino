@@ -2,14 +2,14 @@ export class Dinosaur {
     constructor() {
         this.x = 100
         this.y = 100
-        this.deltay
-document.addEventListener("keydown", this.keydown.bind(this))
+        this.dy = 0
+        document.addEventListener("keydown", this.keydown.bind(this))
     }
 
     keydown(event) {
-        console.log("key pressed",event)
-        this.y += 10
-        
+        console.log("key pressed", event)
+        this.dy += -20
+
     }
 
 
@@ -18,7 +18,16 @@ document.addEventListener("keydown", this.keydown.bind(this))
         ctx.beginPath()
         ctx.arc(this.x, this.y, 10, 0, Math.PI * 2)
         ctx.fill()
+
+
+
+        this.y += this.dy;
+        this.dy += 3
+
+        if (this.y > 200) {
+            this.dy = 0
+            this.y = 200
+
+        }
     }
-
 }
-

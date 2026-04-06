@@ -21,6 +21,13 @@ export default class Game {
         this.ctx.fillStyle = "rgba(255, 255, 1)"
         this.ctx.fillText("dino", 410, 250)
 
+        this.ctx.strokeStyle = "black"
+        this.ctx.beginPath()
+        this.ctx.moveTo(10, 200)
+        this.ctx.lineTo(780, 200)
+        this.ctx.stroke()
+
+
         this.Dinosaur.draw(this.ctx)
         window.requestAnimationFrame(this.frame.bind(this))
 
