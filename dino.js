@@ -34,3 +34,9 @@ export default class Game {
     }
 
 }
+
+
+// 1514, 2 (TL)
+// 1602, 96 (BR)
+// 88 (width)
+// 94 (height)

@@ -10,6 +10,8 @@ export class Dinosaur {
         console.log("key pressed", event)
         this.dy += -20
 
+        this.sprite = { x: 1514, y: 2, w: 88, h: 94 }
+        //top left and width and height 4 sprite
     }
 
 
