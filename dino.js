@@ -40,3 +40,7 @@ export default class Game {
 // 1602, 96 (BR)
 // 88 (width)
 // 94 (height)
+
+//FOR CACTUS #1 (the medium size one really close to another cactus)
+// -50 (width)
+// -100 (height)
