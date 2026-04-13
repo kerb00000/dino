@@ -1,4 +1,5 @@
 import { Dinosaur } from './dinosaur.js'
+import { Cactus } from './cactus.js'
 export default class Game {
     constructor() {
 
