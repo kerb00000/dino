@@ -6,7 +6,7 @@ export default class Game {
         const canvas = document.getElementById("game")
         this.ctx = canvas.getContext("2d")
         this.Dinosaur = new Dinosaur()
-
+        this.Cactus = new Cactus()
     }
 
 
