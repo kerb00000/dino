@@ -17,7 +17,12 @@ export class Dinosaur {
 
     keydown(event) {
         console.log("key pressed", event)
-        this.dy += -20
+        event.preventDefault()
+      
+
+       if (this.y == 200) {
+            this.dy = -3
+        }
 
     }
 
@@ -47,7 +52,8 @@ export class Dinosaur {
 
 
         this.y += this.dy;
-        this.dy += 3
+        this.dy += 0.1
+
 
         if (this.y > 200) {
             this.dy = 0
@@ -56,3 +62,4 @@ export class Dinosaur {
         }
     }
 }
+//right side is 444, 69; left side is 352, 2

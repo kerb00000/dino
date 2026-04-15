@@ -1,11 +1,14 @@
 import { Dinosaur } from './dinosaur.js'
+
+import { Bird } from '.bird.js'
+
 export default class Game {
     constructor() {
 
         const canvas = document.getElementById("game")
         this.ctx = canvas.getContext("2d")
         this.Dinosaur = new Dinosaur()
-
+        this.bird = new Bird()
     }
 
 
@@ -33,10 +36,4 @@ export default class Game {
 
     }
 
-}
-
-
-// 1514, 2 (TL)
-// 1602, 96 (BR)
-// 88 (width)
-// 94 (height)
+  w}
