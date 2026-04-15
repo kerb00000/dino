@@ -1,16 +1,27 @@
 import { Dinosaur } from './dinosaur.js'
 import { Cactus } from './cactus.js'
 
-import { Bird } from '.bird.js'
+import { Bird } from './bird.js'
 
 export default class Game {
     constructor() {
 
+ this.sprite_sheet = new Image()
+        this.sprite_sheet.src = "dinosprites.png"
+        this.sprites = {
+            "standing": { x: 1338, y: 2, w: 88, h: 94 },
+            "walking1": { x: 1514, y: 2, w: 88, h: 94 },
+            "walking2": { x: 1602, y: 2, w: 88, h: 94 },
+        }
+
+
         const canvas = document.getElementById("game")
         this.ctx = canvas.getContext("2d")
-        this.Dinosaur = new Dinosaur()
-        this.Cactus = new Cactus()
-        this.bird = new Bird()
+        this.Dinosaur = new Dinosaur(this)
+        this.Cactus = new Cactus(this)
+        this.bird = new Bird(this)
+
+    
     }
 
 
@@ -34,11 +45,13 @@ export default class Game {
 
 
         this.Dinosaur.draw(this.ctx)
+        this.Bird.draw(this.ctx)
+        this.Cactus.draw(this.ctx)
         window.requestAnimationFrame(this.frame.bind(this))
 
     }
 
-  w}
+  }
 
 // 1514, 2 (TL)
 // 1602, 96 (BR)

@@ -4,4 +4,5 @@ export class Bird {
         this.y = 200
 
     }
+
 }
