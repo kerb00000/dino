@@ -1,4 +1,5 @@
 import { Dinosaur } from './dinosaur.js'
+import { Cactus } from './cactus.js'
 
 import { Bird } from '.bird.js'
 
@@ -8,6 +9,7 @@ export default class Game {
         const canvas = document.getElementById("game")
         this.ctx = canvas.getContext("2d")
         this.Dinosaur = new Dinosaur()
+        this.Cactus = new Cactus()
         this.bird = new Bird()
     }
 
@@ -37,3 +39,12 @@ export default class Game {
     }
 
   w}
+
+// 1514, 2 (TL)
+// 1602, 96 (BR)
+// 88 (width)
+// 94 (height)
+
+//FOR CACTUS #1 (the medium size one really close to another cactus)
+// -50 (width)
+// -100 (height)
