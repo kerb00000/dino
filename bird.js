@@ -7,5 +7,4 @@ export class Bird {
     draw(ctx){
         
     }
-
-}   
+}
