@@ -13,7 +13,7 @@ export class Dinosaur {
       
 
        if (this.y == 200) {
-            this.dy = -3
+            this.dy = -3.5
         }
 
     }

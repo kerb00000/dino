@@ -12,7 +12,7 @@ export class Cactus {
     
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 4;
-    ctx.strokeRect(250, 50, 100, 150);
+    ctx.strokeRect(300, 120, 30, 80);
 
 
     }

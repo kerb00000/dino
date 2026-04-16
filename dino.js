@@ -45,7 +45,7 @@ export default class Game {
 
 
         this.Dinosaur.draw(this.ctx)
-        this.Bird.draw(this.ctx)
+        this.bird.draw(this.ctx)
         this.Cactus.draw(this.ctx)
         window.requestAnimationFrame(this.frame.bind(this))
 
