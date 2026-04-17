@@ -1,6 +1,6 @@
 export class Cactus {
     constructor(game) {
-        this.x = 600    //right side of
+        this.x = 315    //right side of
         this.y = 200    //floor level
         this.game = game
     }
@@ -14,6 +14,18 @@ export class Cactus {
     ctx.lineWidth = 4;
     ctx.strokeRect(300, 120, 30, 80);
 
+    var current_sprite = "cactus1"
+        var sprite = this.game.sprites[current_sprite]
 
+        this.scale = 0.6
+        ctx.drawImage(this.game.sprite_sheet,
+            sprite.x,sprite.y,
+            sprite.w,sprite.h,
+            this.x - sprite.cx * this.scale,
+            this.y - sprite.cy * this.scale,
+            sprite.w * this.scale,
+            sprite.h * this.scale
+        )
     }
 }
+
