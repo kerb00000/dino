@@ -52,7 +52,7 @@ export default class Game {
         this.bird.draw(this.ctx)
         this.Cactus.draw(this.ctx)
 
-    this.cactus.animate()
+        this.cactus.animate()
 
         window.requestAnimationFrame(this.frame.bind(this))
 
