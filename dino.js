@@ -21,8 +21,8 @@ export default class Game {
 
         const canvas = document.getElementById("game")
         this.ctx = canvas.getContext("2d")
-        this.Dinosaur = new Dinosaur(this)
-        this.Cactus = new Cactus(this)
+        this.dinosaur = new Dinosaur(this)
+        this.cactus = new Cactus(this)
         this.bird = new Bird(this)
 
     
@@ -48,9 +48,9 @@ export default class Game {
         this.ctx.stroke()
 
 
-        this.Dinosaur.draw(this.ctx)
+        this.dinosaur.draw(this.ctx)
         this.bird.draw(this.ctx)
-        this.Cactus.draw(this.ctx)
+        this.cactus.draw(this.ctx)
 
     this.cactus.animate()
 
