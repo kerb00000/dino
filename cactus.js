@@ -1,6 +1,6 @@
-import { sprite } from './sprite.js'
+import { Sprite } from './sprite.js'
 
-export class Cactus {
+export class Cactus extends Sprite {
     constructor(game) {
         super(game)
         this.x = 315    //right side of
