@@ -22,16 +22,17 @@ export class Sprite {
             this.sprite.h * this.scale
         )
 
+        }
 
-get_bounds() {
-    return {
-        x: this.x - (this.sprite.cx * this.scale),
-        y: this.y - (this.sprite.cy * this.scale),
-        w: this.sprite.w * this.scale,
-        h: this.sprite.h * this.scale
-    }
-}
+        get_bounds() {
+            return {
+                x: this.x - (this.sprite.cx * this.scale),
+                y: this.y - (this.sprite.cy * this.scale),
+                w: this.sprite.w * this.scale,
+                h: this.sprite.h * this.scale
+            }
+        }
 
 
-    }
+    
 }
