@@ -9,13 +9,13 @@ export default class Game {
  this.sprite_sheet = new Image()
         this.sprite_sheet.src = "dinosprites.png"
         this.sprites = {
-            "standing": { x: 1338, y: 2, w: 89, h: 94, cx: 0, cy: 0 },
-            "walking1": { x: 1514, y: 2, w: 89, h: 94, cx: 0, cy: 0 },
-            "walking2": { x: 1602, y: 2, w: 89, h: 94, cx: 0, cy: 0 },
+            "standing": { x: 1338, y: 2, w: 89, h: 94, cx: 38, cy: 94 },
+            "walking1": { x: 1514, y: 2, w: 89, h: 94, cx: 38, cy: 94 },
+            "walking2": { x: 1602, y: 2, w: 89, h: 94, cx: 38, cy: 94 },
             "bird1": { x: 260, y: 14, w: 93, h: 69, cx: 28, cy: 20 },
             "bird2": { x: 352, y: 2, w: 93, h: 60, cx: 28, cy: 32 },
-            "cactus1": { x: 652, y: 2, w: 50, h: 100, cx: 0, cy: 0 },
-            "cactus2": { x: 702, y: 2, w: 49, h: 100, cx: 0, cy: 0 },
+            "cactus1": { x: 652, y: 2, w: 50, h: 100, cx: 24, cy: 96 },
+            "cactus2": { x: 702, y: 2, w: 49, h: 100, cx: 24, cy: 96 },
         }
 
 
@@ -54,7 +54,10 @@ export default class Game {
 
         this.cactus.animate()
         this.bird.animate()
+        this.dinosaur.animate()
+    
 
+        
         window.requestAnimationFrame(this.frame.bind(this))
 
         
@@ -62,11 +65,3 @@ export default class Game {
 
   }
 
-// 1514, 2 (TL)
-// 1602, 96 (BR)
-// 88 (width)
-// 94 (height)
-
-//FOR CACTUS #1 (the medium size one really close to another cactus)
-// -50 (width)
-// -100 (height)
