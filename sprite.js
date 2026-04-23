@@ -32,7 +32,7 @@ export class Sprite {
             h: this.sprite.h * this.scale
         }
     }
-
+//blah
     collides_with(other) {
         //first sprite
         //other is second sprite
