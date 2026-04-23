@@ -32,42 +32,16 @@ export class Sprite {
             h: this.sprite.h * this.scale
         }
     }
-//blah
-    collides_with(other) {
-        //first sprite
-        //other is second sprite
-        bounds_a = this.get_bounds()
-        bounds_b = other.get_bounds()
+    //blah
+    collides_with(other_sprite) {
+        var self = this.get_bounds()
+        var other = other_sprite.get_bounds()
 
-        if ((
-            ((bounds_b.x > bounds_a.x)
-            &&
-            (bounds_b.x < (bounds_a.x + bounds_a.w))
-        )
-            ||
-            (
-                ((bounds_b.x + bounds_b.w) >= bounds_a.x)
-                &&
-                ((bounds_b.x + bounds_b.w) <= (bounds_a.x + bounds_a.w))
-            )
-        )
-        &&
-        (
-            ((bounds_b.y > bounds_a.y)
-            &&
-            (bounds_b.y < (bounds_a.y + bounds_a.h))
-        )
-            ||
-            (
-                ((bounds_b.y + bounds_b.h) >= bounds_a.y)
-                &&
-                ((bounds_b.y + bounds_b.h) <= (bounds_a.y + bounds_a.h))
-            )
-        )
-    ) {
-        return true
+        return (
+          (self.x < (other.x + other.w)) &&
+          ((self.x + self.w) > other.x) &&
+          (self.y > (other.y + other.h))&&
+          ((self.y + self.h) > other.y))
     }
-    return false
-}
 
 }
