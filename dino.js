@@ -56,8 +56,11 @@ export default class Game {
         this.bird.animate()
         this.dinosaur.animate()
     
+if (this.dino.collides_with(this.cactus)) {
+    console.log("Hit Cactus!")
 
-        
+}
+
         window.requestAnimationFrame(this.frame.bind(this))
 
         
