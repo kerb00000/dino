@@ -1,12 +1,19 @@
+import settings from './settings.js'
+
 import { Dinosaur } from './dinosaur.js'
 import { Cactus } from './cactus.js'
 
 import { Bird } from './bird.js'
 
+const PLAYING = "PLAYING"
+const LOST = "LOST"
+
 export default class Game {
     constructor() {
 
- this.sprite_sheet = new Image()
+        this.state = PLAYING
+
+        this.sprite_sheet = new Image()
         this.sprite_sheet.src = "dinosprites.png"
         this.sprites = {
             "standing": { x: 1338, y: 2, w: 89, h: 94, cx: 38, cy: 94 },
@@ -19,13 +26,13 @@ export default class Game {
         }
 
 
-        const canvas = document.getElementById("game")
-        this.ctx = canvas.getContext("2d")
+        this.canvas = document.getElementById("game")
+        this.ctx = this.canvas.getContext("2d")
         this.dinosaur = new Dinosaur(this)
         this.cactus = new Cactus(this)
         this.bird = new Bird(this)
 
-    
+
     }
 
 
@@ -43,8 +50,8 @@ export default class Game {
 
         this.ctx.strokeStyle = "black"
         this.ctx.beginPath()
-        this.ctx.moveTo(10, 200)
-        this.ctx.lineTo(780, 200)
+        this.ctx.moveTo(10, settings.floor_y)
+        this.ctx.lineTo(780, settings.floor_y)
         this.ctx.stroke()
 
 
@@ -52,19 +59,36 @@ export default class Game {
         this.bird.draw(this.ctx)
         this.cactus.draw(this.ctx)
 
-        this.cactus.animate()
-        this.bird.animate()
-        this.dinosaur.animate()
-    
-if (this.dinosaur.collides_with(this.cactus)) {
-    console.log("Hit Cactus!")
+        if (this.state == PLAYING) {
+            this.cactus.animate()
+            this.bird.animate()
+            this.dinosaur.animate()
 
-}
+
+        } else if (this.state == LOST) {
+            this.ctx.font = "60px times"
+            this.ctx.fillStyle = "blue";
+            this.ctx.textAlign = "center";
+            this.ctx.textBaseline = "middle"
+            this.ctx.fillText("YOU LOST!",
+                this.canvas.width / 2, this.canvas.height / 2);
+        }
+
+        if (this.dinosaur.collides_with(this.cactus)) {
+            console.log("Hit Cactus!")
+            this.state = LOST
+        }
+
+        if (this.dinosaur.collides_with(this.bird)) {
+            this.state = LOST
+
+        }
+
 
         window.requestAnimationFrame(this.frame.bind(this))
 
-        
+
     }
 
-  }
+}
 

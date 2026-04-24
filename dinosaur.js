@@ -1,5 +1,5 @@
 
-
+import settings from './settings.js'
 
 import { Sprite } from './sprite.js'
 export class Dinosaur extends Sprite {
@@ -7,7 +7,7 @@ export class Dinosaur extends Sprite {
         super(game)
 
         this.x = 100
-        this.y = 100
+        this.y = settings.floor_y
         this.dy = 0
         document.addEventListener("keydown", this.keydown.bind(this))
         this.set_sprite("standing")
@@ -18,8 +18,8 @@ export class Dinosaur extends Sprite {
         event.preventDefault()
 
 
-        if (this.y == 200) {
-            this.dy = -3.5
+        if (this.y == settings.floor_y) {
+            this.dy = settings.gravity_dy
         }
 
     }
@@ -33,12 +33,12 @@ export class Dinosaur extends Sprite {
 
 
         this.y += this.dy;
-        this.dy += 0.1
+        this.dy += settings.gravity_dy
 
 
-        if (this.y > 200) {
+        if (this.y > settings.floor_y) {
             this.dy = 0
-            this.y = 200
+            this.y = settings.floor_y
 
         }
     }

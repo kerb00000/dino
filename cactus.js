@@ -1,3 +1,4 @@
+import settings from './settings.js'
 import { Sprite } from './sprite.js'
 
 export class Cactus extends Sprite {
