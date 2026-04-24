@@ -40,7 +40,7 @@ export class Sprite {
         return (
           (self.x < (other.x + other.w)) &&
           ((self.x + self.w) > other.x) &&
-          (self.y > (other.y + other.h))&&
+          (self.y < (other.y + other.h))&&
           ((self.y + self.h) > other.y))
     }
 
