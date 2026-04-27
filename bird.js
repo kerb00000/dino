@@ -5,7 +5,7 @@ export class Bird extends Sprite {
     constructor(game) {
         super(game)
         this.x = 600
-        this.y = 200
+        this.y = settings.floor_y - settings.bird_height
         this.current_sprite = "bird1"
         this.set_sprite("bird1")
         this.flap_counter = 10

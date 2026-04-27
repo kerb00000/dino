@@ -5,7 +5,7 @@ export class Cactus extends Sprite {
     constructor(game) {
         super(game)
         this.x = 315    //right side of
-        this.y = 200    //floor level 
+        this.y = settings.floor_y   //floor level 
 
         this.set_sprite("cactus1")
     }
@@ -13,7 +13,7 @@ export class Cactus extends Sprite {
 
 
     animate() {
-        this.x -= 1
+        this.x -= settings.cactus_speed
     }
 
 }

@@ -1,6 +1,10 @@
 
 import settings from './settings.js'
 
+const STANDING = "standing"
+const WALKING = "walking"
+const CROUCHING = "crouching"
+
 import { Sprite } from './sprite.js'
 export class Dinosaur extends Sprite {
     constructor(game) {
@@ -10,7 +14,12 @@ export class Dinosaur extends Sprite {
         this.y = settings.floor_y
         this.dy = 0
         document.addEventListener("keydown", this.keydown.bind(this))
-        this.set_sprite("standing")
+
+this.state = STANDING
+
+        this.current_sprite = "walking1"
+        this.set_sprite(this.current_sprite)
+        this.walk_counter =  10
     }
 
     keydown(event) {
@@ -19,11 +28,22 @@ export class Dinosaur extends Sprite {
 
 
         if (this.y == settings.floor_y) {
-            this.dy = settings.gravity_dy
+            this.dy = -settings.jump_dy
+            console.log ("jumping")
         }
+
 
     }
 
+    set_state(state) {
+        this.state = state
+        if (this.state == STANDING){
+            this.current_spreit = "standing"
+         } else if (this.state == WALKING) {
+            this.current_sprite = "walking1"
+            this.walking_counter = 10
+         }
+    }
 
     animate(ctx) {
 
@@ -41,6 +61,24 @@ export class Dinosaur extends Sprite {
             this.y = settings.floor_y
 
         }
+
+    if (this.state == WALKING) {
+ this.walk_counter -= 1
+        if (this.walk_counter == 0) {
+            this.walk_counter = 10
+
+            if (this.current_sprite == "walking1") {
+                this.current_sprite = "walking2"
+            } else {
+                this.current_sprite = "walking1"
+            }
+
+        }
+    }
+        this.set_sprite(this.current_sprite)
+
+
+
     }
 }
 //right side is 444, 69; left side is 352, 2
