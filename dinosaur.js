@@ -14,22 +14,49 @@ export class Dinosaur extends Sprite {
         this.y = settings.floor_y
         this.dy = 0
         document.addEventListener("keydown", this.keydown.bind(this))
-
-this.state = STANDING
+        document.addEventListener("keyup", this.keydown.bind(this))
+        this.state = WALKING
 
         this.current_sprite = "walking1"
         this.set_sprite(this.current_sprite)
-        this.walk_counter =  10
+        this.walk_counter = 10
     }
 
     keydown(event) {
-        console.log("key pressed", event)
+
         event.preventDefault()
 
 
-        if (this.y == settings.floor_y) {
-            this.dy = -settings.jump_dy
-            console.log ("jumping")
+
+        if (event.key == "ArrowUp") {
+
+            if (this.y == settings.floor_y) {
+                this.dy = -settings.jump_dy
+                console.log("jumping")
+            }
+
+        } else if (event.key == "ArrowDown") {
+            this.set_state(CROUCHING)
+        }
+
+
+    }
+
+     keyup(event) {
+
+        event.preventDefault()
+
+
+
+        if (event.key == "ArrowUp") {
+
+            if (this.y == settings.floor_y) {
+                this.dy = -settings.jump_dy
+                console.log("jumping")
+            }
+
+        } else if (event.key == "ArrowDown") {
+            this.set_state(CROUCHING)
         }
 
 
@@ -37,18 +64,18 @@ this.state = STANDING
 
     set_state(state) {
         this.state = state
-        if (this.state == STANDING){
+        if (this.state == STANDING) {
             this.current_spreit = "standing"
-         } else if (this.state == WALKING) {
+        } else if (this.state == WALKING) {
             this.current_sprite = "walking1"
             this.walking_counter = 10
-         }
+        }
     }
 
     animate(ctx) {
 
 
-       
+
 
 
 
@@ -62,19 +89,32 @@ this.state = STANDING
 
         }
 
-    if (this.state == WALKING) {
- this.walk_counter -= 1
-        if (this.walk_counter == 0) {
-            this.walk_counter = 10
+        if (this.state == WALKING) {
+            this.walk_counter -= 1
+            if (this.walk_counter == 0) {
+                this.walk_counter = 10
 
-            if (this.current_sprite == "walking1") {
-                this.current_sprite = "walking2"
-            } else {
-                this.current_sprite = "walking1"
+                if (this.current_sprite == "walking1") {
+                    this.current_sprite = "walking2"
+                } else {
+                    this.current_sprite = "walking1"
+                }
+
             }
+        } else if (this.state == CROUCHING) {
+            this.walk_counter -= 1
+            if (this.walk_counter == 0) {
+                this.walk_counter = 10
 
+                if (this.current_sprite == "crouching1") {
+                    this.current_sprite = "crouching2"
+                } else {
+                    this.current_sprite = "crouching1"
+                }
+
+            }
         }
-    }
+
         this.set_sprite(this.current_sprite)
 
 
