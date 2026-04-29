@@ -14,7 +14,7 @@ export class Dinosaur extends Sprite {
         this.y = settings.floor_y
         this.dy = 0
         document.addEventListener("keydown", this.keydown.bind(this))
-        document.addEventListener("keyup", this.keydown.bind(this))
+        document.addEventListener("keyup", this.keyup.bind(this))
         this.state = WALKING
 
         this.current_sprite = "walking1"
@@ -56,7 +56,7 @@ export class Dinosaur extends Sprite {
             }
 
         } else if (event.key == "ArrowDown") {
-            this.set_state(CROUCHING)
+            this.set_state(WALKING)
         }
 
 
