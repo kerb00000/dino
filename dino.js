@@ -10,7 +10,7 @@ const LOST = "LOST"
 
 export default class Game {
     constructor() {
-
+this.score = 0
         this.state = PLAYING
 
         this.sprite_sheet = new Image()
@@ -24,15 +24,22 @@ export default class Game {
             "bird1": { x: 260, y: 14, w: 93, h: 69, cx: 28, cy: 20 },
             "bird2": { x: 352, y: 2, w: 93, h: 60, cx: 28, cy: 32 },
             "cactus1": { x: 652, y: 2, w: 50, h: 100, cx: 24, cy: 96 },
-            "cactus2": { x: 702, y: 2, w: 49, h: 100, cx: 24, cy: 96 },
+            "cactus2": { x: 702, y: 2, w: 49, h: 100, cx: 24, cy: 96 }
+            
         }
 
 
         this.canvas = document.getElementById("game")
         this.ctx = this.canvas.getContext("2d")
         this.dinosaur = new Dinosaur(this)
+
+        this.obstacles = [ ]
+        
         this.cactus = new Cactus(this)
+        this.obstacles.push(this.cactus)
+        
         this.bird = new Bird(this)
+        this.obstacles.push(this.bird)
 
 
     }
@@ -48,7 +55,7 @@ export default class Game {
         this.ctx.clearRect(0, 0, 800, 600)
         this.ctx.font = "30px monospace"
         this.ctx.fillStyle = "rgba(255, 255, 1)"
-        this.ctx.fillText("dino", 410, 250)
+        this.ctx.fillText("", 410, 250)
 
         this.ctx.strokeStyle = "black"
         this.ctx.beginPath()
@@ -56,10 +63,24 @@ export default class Game {
         this.ctx.lineTo(780, settings.floor_y)
         this.ctx.stroke()
 
+        this.score += 1
+
+        this.ctx.font = "30px times"
+        this.ctx.fillStyle = "blue";
+        var actual_score = Math.round(this.score / 10)
+        this.ctx.fillText(`${actual_score}`, 400, 50);
+
+        if (this.state == PLAYING) {
+            this.score += 1
+        }
+
+for (const obstacle of this.obstacles) {
+    obstacle.draw(this.ctx)
+}
 
         this.dinosaur.draw(this.ctx)
-        this.bird.draw(this.ctx)
-        this.cactus.draw(this.ctx)
+       //this.bird.draw(this.ctx)
+      //this.cactus.draw(this.ctx)
 
         if (this.state == PLAYING) {
             this.cactus.animate()

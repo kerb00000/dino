@@ -9,6 +9,8 @@ export class Bird extends Sprite {
         this.current_sprite = "bird1"
         this.set_sprite("bird1")
         this.flap_counter = 10
+
+        
     }
 
     animate() {
@@ -25,7 +27,7 @@ export class Bird extends Sprite {
             }
 
         }
-        this.x -= 1
+        this.x -= settings.bird_speed
         this.set_sprite(this.current_sprite)
 
 
