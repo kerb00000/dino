@@ -4,7 +4,7 @@ import { Sprite } from './sprite.js'
 export class Bird extends Sprite {
     constructor(game) {
         super(game)
-        this.x = 600
+        this.x = 2000
         this.y = settings.floor_y - settings.bird_height
         this.current_sprite = "bird1"
         this.set_sprite("bird1")

@@ -10,7 +10,7 @@ const LOST = "LOST"
 
 export default class Game {
     constructor() {
-this.score = 0
+        this.score = 0
         this.state = PLAYING
 
         this.sprite_sheet = new Image()
@@ -19,13 +19,13 @@ this.score = 0
             "standing": { x: 1338, y: 2, w: 89, h: 94, cx: 38, cy: 94 },
             "walking1": { x: 1514, y: 2, w: 89, h: 94, cx: 38, cy: 94 },
             "walking2": { x: 1602, y: 2, w: 89, h: 94, cx: 38, cy: 94 },
-            "crouching1": { x: 1862, y: 36, w: 118, h: 60, cx: 34, cy: 60},
-            "crouching2": { x: 1980, y: 36, w: 118, h: 60, cx: 34, cy: 60},
+            "crouching1": { x: 1862, y: 36, w: 118, h: 60, cx: 34, cy: 60 },
+            "crouching2": { x: 1980, y: 36, w: 118, h: 60, cx: 34, cy: 60 },
             "bird1": { x: 260, y: 14, w: 93, h: 69, cx: 28, cy: 20 },
             "bird2": { x: 352, y: 2, w: 93, h: 60, cx: 28, cy: 32 },
             "cactus1": { x: 652, y: 2, w: 50, h: 100, cx: 24, cy: 96 },
             "cactus2": { x: 702, y: 2, w: 49, h: 100, cx: 24, cy: 96 }
-            
+
         }
 
 
@@ -33,11 +33,11 @@ this.score = 0
         this.ctx = this.canvas.getContext("2d")
         this.dinosaur = new Dinosaur(this)
 
-        this.obstacles = [ ]
-        
+        this.obstacles = []
+
         this.cactus = new Cactus(this)
         this.obstacles.push(this.cactus)
-        
+
         this.bird = new Bird(this)
         this.obstacles.push(this.bird)
 
@@ -74,17 +74,24 @@ this.score = 0
             this.score += 1
         }
 
-for (const obstacle of this.obstacles) {
-    obstacle.draw(this.ctx)
-}
+        for (const obstacle of this.obstacles) {
+            obstacle.draw(this.ctx)
+
+              if (this.dinosaur.collides_with(obstacle)) {
+            console.log("Hit Object!")
+            this.state = LOST
+        }
+
+        }
 
         this.dinosaur.draw(this.ctx)
-       //this.bird.draw(this.ctx)
-      //this.cactus.draw(this.ctx)
+        //this.bird.draw(this.ctx)
+        //this.cactus.draw(this.ctx)
 
         if (this.state == PLAYING) {
-            this.cactus.animate()
-            this.bird.animate()
+            for (const obstacle of this.obstacles) {
+                obstacle.animate(this.ctx)
+            }
             this.dinosaur.animate()
 
 
@@ -96,17 +103,6 @@ for (const obstacle of this.obstacles) {
             this.ctx.fillText("YOU LOST!",
                 this.canvas.width / 2, this.canvas.height / 2);
         }
-
-        if (this.dinosaur.collides_with(this.cactus)) {
-            console.log("Hit Cactus!")
-            this.state = LOST
-        }
-
-        if (this.dinosaur.collides_with(this.bird)) {
-            this.state = LOST
-
-        }
-
 
         window.requestAnimationFrame(this.frame.bind(this))
 
