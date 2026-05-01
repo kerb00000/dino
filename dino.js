@@ -35,12 +35,13 @@ export default class Game {
 
         this.obstacles = []
 
-        this.cactus = new Cactus(this)
-        this.obstacles.push(this.cactus)
+
 
         this.bird = new Bird(this)
         this.obstacles.push(this.bird)
 
+        this.cactus_counter = 30
+        this.bird_counter = 2000
 
     }
 
@@ -74,15 +75,32 @@ export default class Game {
             this.score += 1
         }
 
+        console.log(this.obstacles)
+
         for (const obstacle of this.obstacles) {
             obstacle.draw(this.ctx)
 
-              if (this.dinosaur.collides_with(obstacle)) {
-            console.log("Hit Object!")
-            this.state = LOST
-        }
+            if (this.dinosaur.collides_with(obstacle)) {
+                console.log("Hit Object!")
+                this.state = LOST
+            }}
+            console.log(this.cactus_counter)
+            this.obstacles = this.obstacles.filter(o => o.x > -50)
 
-        }
+            this.cactus_counter -= 1
+            if (this.cactus_counter == 0) {
+                var cactus = new Cactus(this)
+                this.obstacles.push(cactus)
+                this.cactus_counter = 100
+            }
+
+            this.bird_counter -= 1
+            if (this.bird_counter == 0) {
+                var bird = new Bird(this)
+                this.obstacles.push(bird)
+                this.bird_counter = 1000
+            }
+        
 
         this.dinosaur.draw(this.ctx)
         //this.bird.draw(this.ctx)
@@ -103,6 +121,7 @@ export default class Game {
             this.ctx.fillText("YOU LOST!",
                 this.canvas.width / 2, this.canvas.height / 2);
         }
+
 
         window.requestAnimationFrame(this.frame.bind(this))
 
