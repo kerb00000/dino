@@ -7,3 +7,4 @@ const settings = {
     cactus_speed: 2
 }
 export default settings;
+//settings
