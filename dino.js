@@ -83,24 +83,25 @@ export default class Game {
             if (this.dinosaur.collides_with(obstacle)) {
                 console.log("Hit Object!")
                 this.state = LOST
-            }}
-            console.log(this.cactus_counter)
-            this.obstacles = this.obstacles.filter(o => o.x > -50)
-
-            this.cactus_counter -= 1
-            if (this.cactus_counter == 0) {
-                var cactus = new Cactus(this)
-                this.obstacles.push(cactus)
-                this.cactus_counter = 100
             }
+        }
+        console.log(this.cactus_counter)
+        this.obstacles = this.obstacles.filter(o => o.x > -50)
 
-            this.bird_counter -= 1
-            if (this.bird_counter == 0) {
-                var bird = new Bird(this)
-                this.obstacles.push(bird)
-                this.bird_counter = 1000
-            }
-        
+        this.cactus_counter -= 1
+        if (this.cactus_counter == 0) {
+            var cactus = new Cactus(this)
+            this.obstacles.push(cactus)
+            this.cactus_counter = 250 + (Math.random() * 100)
+        }
+
+        this.bird_counter -= 1
+        if (this.bird_counter == 0) {
+            var bird = new Bird(this)
+            this.obstacles.push(bird)
+            this.bird_counter = 1000
+        }
+
 
         this.dinosaur.draw(this.ctx)
         //this.bird.draw(this.ctx)
