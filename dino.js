@@ -64,7 +64,7 @@ export default class Game {
         this.ctx.lineTo(780, settings.floor_y)
         this.ctx.stroke()
 
-        this.score += 1
+      
 
         this.ctx.font = "30px times"
         this.ctx.fillStyle = "blue";
