@@ -75,8 +75,6 @@ export default class Game {
             this.score += 1
         }
 
-        console.log(this.obstacles)
-
         for (const obstacle of this.obstacles) {
             obstacle.draw(this.ctx)
 
@@ -89,23 +87,21 @@ export default class Game {
         this.obstacles = this.obstacles.filter(o => o.x > -50)
 
         this.cactus_counter -= 1
-        if (this.cactus_counter == 0) {
+        if (this.cactus_counter <= 0) {
             var cactus = new Cactus(this)
             this.obstacles.push(cactus)
-            this.cactus_counter = 250 + (Math.random() * 100)
+            this.cactus_counter = settings.cactus_frequency + (Math.random() * settings.cactus_randomness)
         }
 
         this.bird_counter -= 1
-        if (this.bird_counter == 0) {
+        if (this.bird_counter <= 0) {
             var bird = new Bird(this)
             this.obstacles.push(bird)
-            this.bird_counter = 1000
+            this.bird_counter = settings.bird_frequency + (Math.random() * settings.bird_randomness)
         }
 
 
         this.dinosaur.draw(this.ctx)
-        //this.bird.draw(this.ctx)
-        //this.cactus.draw(this.ctx)
 
         if (this.state == PLAYING) {
             for (const obstacle of this.obstacles) {
